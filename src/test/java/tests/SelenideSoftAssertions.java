@@ -14,15 +14,17 @@ import static com.codeborne.selenide.Selenide.*;
 public class SelenideSoftAssertions {
 
     @BeforeAll
-    static void beforeAll() {
+    static void beforeAllSetup() {
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = false;
+
     }
 
     @Test
-    void shouldFindSelenideSoftAssertions() {
+    void TestShouldFindSelenideSoftAssertions() {
         // открыть страницу репозитория селенида
-        open("https://github.com/selenide/selenide");
+        open("/selenide/selenide");
 
         //переход, поиск и проверка в wiki
         $("[id=wiki-tab]").click();
